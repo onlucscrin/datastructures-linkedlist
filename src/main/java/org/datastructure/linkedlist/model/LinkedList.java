@@ -58,6 +58,28 @@ public class LinkedList<T> {
         return stringBuilder.toString();
     }
 
+    public boolean detectLoop(){
+        LinkedList list = new LinkedList();
+        list.insertAtEnd(12);
+        list.insertAtEnd(23);
+        list.insertAtEnd(14);
+        list.insertAtEnd(26);
+        list.insertAtEnd(16);
+        list.insertAtEnd(29);
+        list.lastNode.setNextNode(list.firstNode);
+
+        Node<T> runningNode = list.firstNode;
+        Node<T> catchinUpNode = list.firstNode;
+        while(runningNode!=null && runningNode.getNextNode()!= null){
+
+            catchinUpNode = catchinUpNode.getNextNode();
+            runningNode = runningNode.getNextNode().getNextNode();
+            if(Objects.equals(runningNode, catchinUpNode)){
+                return true;
+            }
+        }
+        return false;
+    }
     public Integer getLength(){
         return this.length;
     }

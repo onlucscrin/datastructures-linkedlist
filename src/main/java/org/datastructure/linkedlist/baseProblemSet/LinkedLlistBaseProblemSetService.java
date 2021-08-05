@@ -28,4 +28,8 @@ public class LinkedLlistBaseProblemSetService<T> {
     public String getString(){
         return linkedList.getLinkedList();
     }
+    public boolean detectLoop(){
+        return linkedList.detectLoop();
+    }
+
 }

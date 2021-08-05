@@ -68,4 +68,16 @@ public class LinkedListBaseProblemSetController {
         }
     }
 
+    @GetMapping(path = "/loopdetection", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Boolean> getLinkedListLoop(){
+        try{
+            Boolean result = this.linkedLlistBaseProblemSetService.detectLoop();
+            return ResponseEntity.ok().body(result);
+        }catch (Exception e){
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+
+
 }
