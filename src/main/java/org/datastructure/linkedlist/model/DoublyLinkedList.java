@@ -2,11 +2,10 @@ package org.datastructure.linkedlist.model;
 
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
 import java.util.Objects;
 
 @Component
-public class LinkedList<T> {
+public class DoublyLinkedList<T> {
     Node<T> firstNode;
     Node<T> lastNode;
     int length;
@@ -60,7 +59,7 @@ public class LinkedList<T> {
     }
 
     public boolean detectLoop(){
-        LinkedList list = new LinkedList();
+        DoublyLinkedList list = new DoublyLinkedList();
         list.insertAtEnd(12);
         list.insertAtEnd(23);
         list.insertAtEnd(14);
@@ -83,34 +82,5 @@ public class LinkedList<T> {
     }
     public Integer getLength(){
         return this.length;
-    }
-
-    public Object getFindMiddle(){
-        Node rabbitNode = firstNode;
-        Node tortoiseNode = firstNode;
-        while(!Objects.isNull(rabbitNode) && !Objects.isNull(rabbitNode.getNextNode())
-                && !Objects.isNull(rabbitNode.getNextNode().getNextNode())  ) {
-            rabbitNode = rabbitNode.getNextNode().getNextNode();
-            tortoiseNode = tortoiseNode.getNextNode();
-        }
-        if(Objects.isNull(tortoiseNode))
-            return null;
-        return tortoiseNode.getData();
-    }
-
-    public String removeDuplicates() {
-        Node pointer = firstNode;
-        Node preVpointer = null;
-        HashMap<Integer, Integer> value = new HashMap<>();
-        while(!Objects.isNull(pointer)){
-            if(Objects.isNull(value.get(pointer.getData()))){
-                value.put((Integer) pointer.getData(), 1);
-                preVpointer = pointer;
-            } else {
-                preVpointer.setNextNode(pointer.getNextNode());
-            }
-            pointer = pointer.getNextNode();
-        }
-        return this.getLinkedList();
     }
 }

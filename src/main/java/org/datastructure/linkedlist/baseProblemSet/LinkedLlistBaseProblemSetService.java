@@ -31,5 +31,12 @@ public class LinkedLlistBaseProblemSetService<T> {
     public boolean detectLoop(){
         return linkedList.detectLoop();
     }
+    public Object findMiddle(){
+        return linkedList.getFindMiddle();
+    }
+
+    public String removeDuplicates(){
+        return linkedList.removeDuplicates();
+    }
 
 }

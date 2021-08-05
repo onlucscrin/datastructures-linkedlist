@@ -78,6 +78,25 @@ public class LinkedListBaseProblemSetController {
         }
     }
 
+    @GetMapping(path ="/middleNode", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> getMiddleNode(){
+        try {
+            Object result = this.linkedLlistBaseProblemSetService.findMiddle();
+            return ResponseEntity.ok().body(result);
+        } catch(Exception e){
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    @GetMapping(path = "ducplicatesRemoved", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> removeDuplicates(){
+        try{
+            String result = this.linkedLlistBaseProblemSetService.removeDuplicates();
+            return ResponseEntity.ok().body(result);
+        }catch (Exception e) {
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 
 
 }
